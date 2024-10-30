@@ -91,6 +91,7 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   timer_init();
+  init_button();
   HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, 1);
   HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, 1);
   /* USER CODE END 2 */
@@ -103,11 +104,11 @@ int main(void)
 
 
     /* USER CODE BEGIN 3 */
-	if(button_flag[0] == 1){
-		HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, 0);
-	}
-	if(isButtonLongPressed(0) == 1){
-		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, 0);
+//	if(isButtonPressed(2)){
+//		HAL_GPIO_TogglePin(LED_0_GPIO_Port, LED_0_Pin);
+//	}
+//	if(isButtonLongPressed(0)){
+//		HAL_GPIO_TogglePin(LED_1_GPIO_Port, LED_1_Pin);
 	}
   }
   /* USER CODE END 3 */
