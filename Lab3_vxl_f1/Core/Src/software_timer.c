@@ -7,7 +7,7 @@
 
 
 #include "software_timer.h"
-
+#include "button.h"
 
 #define TIMER_CYCLE 10
 
@@ -44,6 +44,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 		for(int i = 0; i < 10; i++){
 			timer_run(i);
 		}
+		getKeyInput();
+
 	}
 
 }

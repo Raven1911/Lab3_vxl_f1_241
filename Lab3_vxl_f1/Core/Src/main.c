@@ -19,10 +19,12 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "tim.h"
+#include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "software_timer.h"
+#include "button.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -85,9 +87,12 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
+  MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-
+  timer_init();
+  HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, 1);
+  HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, 1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -96,7 +101,14 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
+
     /* USER CODE BEGIN 3 */
+	if(button_flag[0] == 1){
+		HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, 0);
+	}
+	if(isButtonLongPressed(0) == 1){
+		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, 0);
+	}
   }
   /* USER CODE END 3 */
 }
