@@ -26,6 +26,7 @@
 #include "software_timer.h"
 #include "button.h"
 #include "traffic_light.h"
+#include "global.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -91,10 +92,10 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  timer_init();
+
   init_button();
-  System_counter_init();
-  int count = 0;
+  System_scan_value_led_init();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -104,18 +105,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	if(isButtonPressed(2)){
-//		HAL_GPIO_TogglePin(LED_0_GPIO_Port, LED_0_Pin);
-//	}
-//	if(isButtonLongPressed(0)){
-//		HAL_GPIO_TogglePin(LED_1_GPIO_Port, LED_1_Pin);
-//	}
+	  main_fsm_run();
+	  //four_Led7Seg_display();
 
-//	  decoder_Led(count++);
-//	  if (count > 3) count =0;
-//	  HAL_Delay(1000);
-
-	  four_Led7Seg_display();
   }
   /* USER CODE END 3 */
 }

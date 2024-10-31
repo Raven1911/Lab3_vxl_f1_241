@@ -69,27 +69,7 @@ void decoder_Led(int index){
 
 
 //////////////////////////////// LED 7 SEG ////////////////////////////
-//gpo led_7 seg
-GPIO_7SEG_Config Led_7Seg_Array[7] = {
-	{SEG0_0_GPIO_Port, SEG0_0_Pin},  //  a
-	{SEG0_1_GPIO_Port, SEG0_1_Pin},  //  b
-	{SEG0_2_GPIO_Port, SEG0_2_Pin},  //  c
-	{SEG0_3_GPIO_Port, SEG0_3_Pin},  //  d
-	{SEG0_4_GPIO_Port, SEG0_4_Pin},  //  e
-	{SEG0_5_GPIO_Port, SEG0_5_Pin},  //  f
-	{SEG0_6_GPIO_Port, SEG0_6_Pin}   //  g
-};
 
-void System_counter_init(){
-	Led7Seg_int(Led_7Seg_Array);
-	timer_init();
-
-	//Data buffer	//Scan_led
-	setTimer(0, 50);
-	//DOT 	//DIGITAL CLOCK
-	setTimer(1, 1000);
-
-}
 
 unsigned Led_Pos[4] = {1, 1, 1, 1};
 unsigned En_Led_Pos[4] = {0b1110, 0b1101, 0b1011, 0b0111};
@@ -107,31 +87,25 @@ void En_led_7_seg(){
 }
 
 /////////////////// counter ///////////////////
-uint8_t hour = 23 , minute = 59 , second = 50;
-void updateClockBuffer(){
-	Led_Buffer[0] = hour / 10;
-	Led_Buffer[1] = hour % 10;
-	Led_Buffer[2] = minute / 10;
-	Led_Buffer[3] = minute % 10;
-
-}
-void DIGITAL_CLOCK(){
-	second ++;
-	if ( second >= 60) {
-		second = 0;
-		minute ++;
-	}
-	if( minute >= 60) {
-		minute = 0;
-		hour ++;
-	}
-	if( hour >= 24) {
-		hour = 0;
-	}
-	updateClockBuffer();
+void updateClockBuffer(uint16_t value_7seg0, uint16_t value_7seg1 ){
+	Led_Buffer[0] = value_7seg0 / 10;
+	Led_Buffer[1] = value_7seg0 % 10;
+	Led_Buffer[2] = value_7seg1 / 10;
+	Led_Buffer[3] = value_7seg1 % 10;
 
 
 }
+
+void update_value_7segment(){
+	//contrans value
+	value_7seg_red_0 = RED_TIME;
+	value_7seg_yellow_0 = YELLOW_TIME;
+	value_7seg_green_0 = GREEN_TIME;
+
+	value_7seg_red_01 = value_7seg_red_0 - value_7seg_yellow_0;
+	value_7seg_red_02 = value_7seg_red_0 - value_7seg_green_0;
+}
+
 /////////////////////
 void update7SEG(int index){
 		//DATA BUFFER
@@ -151,23 +125,67 @@ void update7SEG(int index){
 
 
 
-void four_Led7Seg_display(){
+uint16_t state = 0;
+void count_down(){
+	if(flag_timer[1]){
+		switch (state) {
+			case 0:
+				updateClockBuffer(value_7seg_red_0, value_7seg_red_0);
+				value_7seg_red_01--;
+				value_7seg_red_0--;
+
+				if(value_7seg_red_01 <= 0){
+					state = 1;
+
+				}
+				break;
+			case 1:
+				updateClockBuffer(value_7seg_red_0, value_7seg_red_0);
+				value_7seg_red_02--;
+				value_7seg_red_0--;
+
+				if(value_7seg_red_02 <= 0){
+					state = 2;
+				}
+				break;
+			case 2:
+				updateClockBuffer(value_7seg_green_0, value_7seg_green_0);
+				value_7seg_green_0--;
+
+				if(value_7seg_green_0 <= 0){
+					state = 3;
+				}
+				break;
+			case 3:
+				updateClockBuffer(value_7seg_yellow_0, value_7seg_yellow_0);
+				value_7seg_yellow_0--;
+
+				if(value_7seg_yellow_0 <= 0){
+					state = 0;
+					update_value_7segment();
+				}
+				break;
+			default:
+
+
+				break;
+		}
+		flag_timer[1] = 0;
+	}
+}
+
+
+void scan_led(){
 	if(flag_timer[0]){
 		update7SEG(index_led++);
 		if(index_led > Max_Led - 1) index_led = 0;
 		flag_timer[0] = 0;
 	}
 
-	if(flag_timer[1]){
-		DIGITAL_CLOCK();
-		flag_timer[1] = 0;
-	}
+
 
 
 }
-
-
-
 
 
 

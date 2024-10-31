@@ -9,11 +9,13 @@
 #define INC_TRAFFIC_LIGHT_H_
 
 #include "main.h"
+#include <stdint.h>
 #include "Led7Seg_Display.h"
 #include "software_timer.h"
+#include "global.h"
 
-void System_counter_init();
 void decoder_Led(int);
-void four_Led7Seg_display();
-
+void update_value_7segment();
+void count_down();
+void scan_led();
 #endif /* INC_TRAFFIC_LIGHT_H_ */
