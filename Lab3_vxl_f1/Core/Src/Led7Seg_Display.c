@@ -6,15 +6,6 @@
  */
 #include "Led7Seg_Display.h"
 ////////////////            DISPLAY-7SEG             ////////////////
-GPIO_7SEG_Config Led_7Seg_Array[7] = {
-	{SEG0_0_GPIO_Port, SEG0_0_Pin},  //  a
-	{SEG0_1_GPIO_Port, SEG0_1_Pin},  //  b
-	{SEG0_2_GPIO_Port, SEG0_2_Pin},  //  c
-	{SEG0_3_GPIO_Port, SEG0_3_Pin},  //  d
-	{SEG0_4_GPIO_Port, SEG0_4_Pin},  //  e
-	{SEG0_5_GPIO_Port, SEG0_5_Pin},  //  f
-	{SEG0_6_GPIO_Port, SEG0_6_Pin}   //  g
-};
 
 void Led7Seg_int(GPIO_7SEG_Config GPIO_Config[7]){
 	for (int i = 0; i < 7; i++) {

@@ -25,6 +25,7 @@
 /* USER CODE BEGIN Includes */
 #include "software_timer.h"
 #include "button.h"
+#include "traffic_light.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -92,8 +93,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   timer_init();
   init_button();
-  HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, 1);
-  HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, 1);
+  System_counter_init();
+  int count = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -102,14 +103,19 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-
     /* USER CODE BEGIN 3 */
 //	if(isButtonPressed(2)){
 //		HAL_GPIO_TogglePin(LED_0_GPIO_Port, LED_0_Pin);
 //	}
 //	if(isButtonLongPressed(0)){
 //		HAL_GPIO_TogglePin(LED_1_GPIO_Port, LED_1_Pin);
-	}
+//	}
+
+//	  decoder_Led(count++);
+//	  if (count > 3) count =0;
+//	  HAL_Delay(1000);
+
+	  four_Led7Seg_display();
   }
   /* USER CODE END 3 */
 }

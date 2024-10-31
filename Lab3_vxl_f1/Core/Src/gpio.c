@@ -45,14 +45,21 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, SEG0_0_Pin|SEG0_1_Pin|SEG0_2_Pin|SEG0_3_Pin
-                          |SEG0_4_Pin|SEG0_5_Pin|SEG0_6_Pin|LED_1_Pin
+                          |SEG0_4_Pin|SEG0_5_Pin|SEG0_6_Pin|EN0_Pin
+                          |EN1_Pin|EN2_Pin|EN3_Pin|LED_1_Pin
                           |LED_0_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, Led_Red_Pin|Led_Yellow_Pin|Led_Green_Pin|Led_Red2_Pin
+                          |Led_Yellow2_Pin|Led_Green2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : PAPin PAPin PAPin PAPin
                            PAPin PAPin PAPin PAPin
+                           PAPin PAPin PAPin PAPin
                            PAPin */
   GPIO_InitStruct.Pin = SEG0_0_Pin|SEG0_1_Pin|SEG0_2_Pin|SEG0_3_Pin
-                          |SEG0_4_Pin|SEG0_5_Pin|SEG0_6_Pin|LED_1_Pin
+                          |SEG0_4_Pin|SEG0_5_Pin|SEG0_6_Pin|EN0_Pin
+                          |EN1_Pin|EN2_Pin|EN3_Pin|LED_1_Pin
                           |LED_0_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -63,6 +70,15 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pin = BUTTON_0_Pin|BUTTON_1_Pin|BUTTON_2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PBPin PBPin PBPin PBPin
+                           PBPin PBPin */
+  GPIO_InitStruct.Pin = Led_Red_Pin|Led_Yellow_Pin|Led_Green_Pin|Led_Red2_Pin
+                          |Led_Yellow2_Pin|Led_Green2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }

@@ -1,0 +1,7 @@
+../Core/Src/traffic_light.c:13:6:decoder_Led	5
+../Core/Src/traffic_light.c:83:6:System_counter_init	1
+../Core/Src/traffic_light.c:102:6:En_led_7_seg	1
+../Core/Src/traffic_light.c:111:6:updateClockBuffer	1
+../Core/Src/traffic_light.c:118:6:DIGITAL_CLOCK	4
+../Core/Src/traffic_light.c:136:6:update7SEG	2
+../Core/Src/traffic_light.c:154:6:four_Led7Seg_display	4
