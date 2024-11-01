@@ -1,0 +1,2 @@
+../Core/Src/fsm_setting.c:15:6:update_led_time	4	static
+../Core/Src/fsm_setting.c:28:6:fsm_setting	16	static

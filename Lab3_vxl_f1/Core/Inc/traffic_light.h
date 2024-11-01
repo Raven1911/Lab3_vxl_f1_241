@@ -16,6 +16,7 @@
 
 void decoder_Led(int);
 void update_value_7segment();
-void count_down();
+void updateClockBuffer(uint16_t value_7seg0, uint16_t value_7seg1);
 void scan_led();
+void blink_Led(int index, int index1);
 #endif /* INC_TRAFFIC_LIGHT_H_ */

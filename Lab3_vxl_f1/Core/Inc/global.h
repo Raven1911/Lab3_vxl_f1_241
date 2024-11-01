@@ -13,6 +13,7 @@
 #include "main.h"
 #include "Led7Seg_Display.h"
 #include "software_timer.h"
+#include "traffic_light.h"
 
 
 #define AUTOMATiC 0
@@ -22,15 +23,16 @@
 #define SETTING_2 4
 
 ///button
+#define MAX_METHOD 5
 extern uint16_t button0_value;
 extern uint16_t button1_value;
 extern uint16_t button2_value;
 
 
 
-#define RED_TIME 15
-#define YELLOW_TIME 5
-#define GREEN_TIME 10
+extern uint16_t RED_TIME;
+extern uint16_t YELLOW_TIME;
+extern uint16_t GREEN_TIME;
 
 //value 7 segment
 extern uint16_t value_7seg_red_0;
@@ -38,6 +40,10 @@ extern uint16_t value_7seg_red_01;
 extern uint16_t value_7seg_red_02;
 extern uint16_t value_7seg_yellow_0;
 extern uint16_t value_7seg_green_0;
+
+extern uint16_t value_7seg_red2_0;
+extern uint16_t value_7seg_yellow2_0;
+extern uint16_t value_7seg_green2_0;
 
 
 void System_scan_value_led_init();

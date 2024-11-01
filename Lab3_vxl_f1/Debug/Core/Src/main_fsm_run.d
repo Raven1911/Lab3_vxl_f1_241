@@ -27,7 +27,7 @@ Core/Src/main_fsm_run.o: ../Core/Src/main_fsm_run.c \
  ../Core/Inc/global.h ../Core/Inc/Led7Seg_Display.h \
  ../Core/Inc/software_timer.h ../Core/Inc/traffic_light.h \
  ../Core/Inc/fsm_automatic.h ../Core/Inc/fsm_manual.h \
- ../Core/Inc/fsm_setting.h
+ ../Core/Inc/fsm_setting.h ../Core/Inc/button.h
 ../Core/Inc/main_fsm_run.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
@@ -61,3 +61,4 @@ Core/Src/main_fsm_run.o: ../Core/Src/main_fsm_run.c \
 ../Core/Inc/fsm_automatic.h:
 ../Core/Inc/fsm_manual.h:
 ../Core/Inc/fsm_setting.h:
+../Core/Inc/button.h:

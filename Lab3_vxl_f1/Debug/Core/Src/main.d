@@ -26,7 +26,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/tim.h ../Core/Inc/main.h ../Core/Inc/gpio.h \
  ../Core/Inc/software_timer.h ../Core/Inc/button.h \
  ../Core/Inc/traffic_light.h ../Core/Inc/Led7Seg_Display.h \
- ../Core/Inc/software_timer.h ../Core/Inc/global.h ../Core/Inc/global.h
+ ../Core/Inc/software_timer.h ../Core/Inc/global.h \
+ ../Core/Inc/traffic_light.h ../Core/Inc/global.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
@@ -61,4 +62,5 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/Led7Seg_Display.h:
 ../Core/Inc/software_timer.h:
 ../Core/Inc/global.h:
+../Core/Inc/traffic_light.h:
 ../Core/Inc/global.h:

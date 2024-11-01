@@ -11,7 +11,7 @@
 #include "main.h"
 
 #define MAX_BUTTON 3
-#define TIME_OUT 200
+#define TIME_OUT 50
 #define NORMAL_STATE SET
 #define PRESSED_STATE RESET
 

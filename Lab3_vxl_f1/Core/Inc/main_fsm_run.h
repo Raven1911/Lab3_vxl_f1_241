@@ -15,6 +15,7 @@
 #include "fsm_automatic.h"
 #include "fsm_manual.h"
 #include "fsm_setting.h"
+#include "button.h"
 
 void main_fsm_run();
 

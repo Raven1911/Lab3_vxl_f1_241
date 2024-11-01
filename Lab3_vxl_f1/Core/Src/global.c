@@ -13,14 +13,20 @@ uint16_t button1_value = 0;
 uint16_t button2_value = 0;
 
 ///value 7 segment
-uint16_t value_7seg_red_0 = 15;
-uint16_t value_7seg_red_01 = 15;
-uint16_t value_7seg_red_02 = 15;
-uint16_t value_7seg_yellow_0 = 5;
-uint16_t value_7seg_green_0 = 10;
+uint16_t RED_TIME = 15;
+uint16_t YELLOW_TIME = 5;
+uint16_t GREEN_TIME = 10;
+
+uint16_t value_7seg_red_0=0;
+uint16_t value_7seg_red_01 = 0;
+uint16_t value_7seg_red_02 = 0;
+uint16_t value_7seg_yellow_0=0;
+uint16_t value_7seg_green_0=0;
 
 
-
+uint16_t value_7seg_red2_0 = 0;
+uint16_t value_7seg_yellow2_0 = 0;
+uint16_t value_7seg_green2_0 = 0;
 
 
 
@@ -37,13 +43,17 @@ GPIO_7SEG_Config Led_7Seg_Array[7] = {
 };
 
 void System_scan_value_led_init(){
+	update_value_7segment();
 	Led7Seg_int(Led_7Seg_Array);
 	timer_init();
 
-	update_value_7segment();
+
 	//Data buffer	//Scan_led
 	setTimer(0, 50);
 	//timer step 1s for 7 segment
 	setTimer(1, 1000);
+
+	// timer blink led
+	setTimer(2, 500);
 
 }
