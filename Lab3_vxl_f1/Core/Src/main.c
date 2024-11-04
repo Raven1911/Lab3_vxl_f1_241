@@ -106,7 +106,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	  main_fsm_run();
-	  //four_Led7Seg_display();
+
 
   }
   /* USER CODE END 3 */

@@ -6,3 +6,8 @@
  */
 
 #include "fsm_manual.h"
+
+
+void fsm_manual(){
+
+}

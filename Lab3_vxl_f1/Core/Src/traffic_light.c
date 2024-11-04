@@ -115,6 +115,50 @@ void decoder_Led(int index){
 	}
 }
 
+void manual_led(int index_0, int index_1){
+
+	//manual traffic light 1
+	switch (index_0) {
+		case 0:
+			HAL_GPIO_WritePin(Led_Red_GPIO_Port, Led_Red_Pin, 0);
+			HAL_GPIO_WritePin(Led_Yellow_GPIO_Port, Led_Yellow_Pin, 1);
+			HAL_GPIO_WritePin(Led_Green_GPIO_Port, Led_Green_Pin, 1);
+			break;
+		case 1:
+			HAL_GPIO_WritePin(Led_Red_GPIO_Port, Led_Red_Pin, 1);
+			HAL_GPIO_WritePin(Led_Yellow_GPIO_Port, Led_Yellow_Pin, 0);
+			HAL_GPIO_WritePin(Led_Green_GPIO_Port, Led_Green_Pin, 1);
+			break;
+		case 2:
+			HAL_GPIO_WritePin(Led_Red_GPIO_Port, Led_Red_Pin, 1);
+			HAL_GPIO_WritePin(Led_Yellow_GPIO_Port, Led_Yellow_Pin, 1);
+			HAL_GPIO_WritePin(Led_Green_GPIO_Port, Led_Green_Pin, 0);
+			break;
+		default:
+			break;
+	}
+
+	//manual traffic light 2
+	switch (index_1) {
+		case 0:
+			HAL_GPIO_WritePin(Led_Red2_GPIO_Port, Led_Red2_Pin, 0);
+			HAL_GPIO_WritePin(Led_Yellow2_GPIO_Port, Led_Yellow2_Pin, 1);
+			HAL_GPIO_WritePin(Led_Green2_GPIO_Port, Led_Green2_Pin, 1);
+			break;
+		case 1:
+			HAL_GPIO_WritePin(Led_Red2_GPIO_Port, Led_Red2_Pin, 1);
+			HAL_GPIO_WritePin(Led_Yellow2_GPIO_Port, Led_Yellow2_Pin, 0);
+			HAL_GPIO_WritePin(Led_Green2_GPIO_Port, Led_Green2_Pin, 1);
+			break;
+		case 2:
+			HAL_GPIO_WritePin(Led_Red2_GPIO_Port, Led_Red2_Pin, 1);
+			HAL_GPIO_WritePin(Led_Yellow2_GPIO_Port, Led_Yellow2_Pin, 1);
+			HAL_GPIO_WritePin(Led_Green2_GPIO_Port, Led_Green2_Pin, 0);
+			break;
+		default:
+			break;
+	}
+}
 
 void blink_Led(int index, int index1){
 	if(index1 == 1){
@@ -216,16 +260,16 @@ void updateClockBuffer(uint16_t value_7seg0, uint16_t value_7seg1 ){
 void update_value_7segment(){
 	//contrans value
 	//traffic 1
-	value_7seg_red_0 = RED_TIME;
-	value_7seg_yellow_0 = YELLOW_TIME;
-	value_7seg_green_0 = GREEN_TIME;
+	value_7seg_red_0 = config_value_red;
+	value_7seg_yellow_0 = config_value_yellow;
+	value_7seg_green_0 = config_value_green;
 
 	value_7seg_red_01 = value_7seg_red_0 - value_7seg_yellow_0;
 	value_7seg_red_02 = value_7seg_red_0 - value_7seg_green_0;
 	//traffic 2
-	value_7seg_red2_0 = RED_TIME;
-	value_7seg_yellow2_0 = YELLOW_TIME;
-	value_7seg_green2_0 = GREEN_TIME;
+	value_7seg_red2_0 = config_value_red;
+	value_7seg_yellow2_0 = config_value_yellow;
+	value_7seg_green2_0 = config_value_green;
 
 
 }

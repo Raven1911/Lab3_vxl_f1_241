@@ -29,10 +29,10 @@ extern uint16_t button1_value;
 extern uint16_t button2_value;
 
 
-
-extern uint16_t RED_TIME;
-extern uint16_t YELLOW_TIME;
-extern uint16_t GREEN_TIME;
+//init value
+extern int config_value_red;
+extern int config_value_yellow;
+extern int config_value_green;
 
 //value 7 segment
 extern uint16_t value_7seg_red_0;

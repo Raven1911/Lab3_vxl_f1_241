@@ -13,9 +13,9 @@ uint16_t button1_value = 0;
 uint16_t button2_value = 0;
 
 ///value 7 segment
-uint16_t RED_TIME = 15;
-uint16_t YELLOW_TIME = 5;
-uint16_t GREEN_TIME = 10;
+int config_value_red = 11;
+int config_value_yellow = 4;
+int config_value_green = 7;
 
 uint16_t value_7seg_red_0=0;
 uint16_t value_7seg_red_01 = 0;
